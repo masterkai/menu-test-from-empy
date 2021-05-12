@@ -114,4 +114,6 @@ function navStart() {
     })
 }
 
-navStart()
+$(function () {
+    navStart()
+})
