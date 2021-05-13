@@ -18,30 +18,33 @@ function navStart() {
             console.log('has a tag')
             console.log('has contentNO')
             $(this).addClass('activated').show()
+        } else {
+            $(this).addClass('activated').next().show().addClass('activated').css({ left: menuWidth })
         }
-        $(this).addClass('activated').next().show().addClass('activated').css({ left: menuWidth })
     })
     $('.class_3').on('click mouseenter', function (e) {
         e.preventDefault()
         e.stopPropagation()
 
         if ($(this).hasClass('contentNO') && $(this).has('a')) {
-            console.log('has a tag')
-            console.log('has contentNO')
-            $(this).addClass('activated').show()
+            // console.log('has a tag')
+            // console.log('has contentNO')
+            $(this).show()
+        } else {
+            $(this).addClass('activated').next().show().addClass('activated').css({ left: menuWidth })
         }
-        $(this).addClass('activated').next().show().addClass('activated').css({ left: menuWidth })
     })
     $('.class_4').on('click mouseenter', function (e) {
         e.preventDefault()
         e.stopPropagation()
 
         if ($(this).hasClass('contentNO') && $(this).has('a')) {
-            console.log('has a tag')
-            console.log('has contentNO')
-            $(this).addClass('activated').show()
+            // console.log('has a tag')
+            // console.log('has contentNO')
+            $(this).show()
+        } else {
+            $(this).addClass('activated').next().show().addClass('activated').css({ left: menuWidth })
         }
-        $(this).addClass('activated').next().show().addClass('activated').css({ left: menuWidth })
     })
 
     // leave event
@@ -56,6 +59,7 @@ function navStart() {
     $('.class_2').on('mouseleave', function (e) {
         const thisObi = $(this),
             theObj = $(e.relatedTarget)
+        // console.log(theObj)
         if (!($(theObj).hasClass('activated') || $(theObj).hasClass('menuClass_3') || $(theObj).parent().hasClass('menuClass_3'))) {
             $(thisObi).removeClass('activated').next().hide().removeClass('activated')
         }
@@ -63,16 +67,33 @@ function navStart() {
     $('.class_3').on('mouseleave', function (e) {
         const thisObi = $(this),
             theObj = $(e.relatedTarget)
+        // console.log(theObj)
         if (!($(theObj).hasClass('activated') || $(theObj).hasClass('menuClass_4') || $(theObj).parent().hasClass('menuClass_4'))) {
-            $(thisObi).removeClass('activated').next().hide().removeClass('activated')
+            return
+        } else {
+            $(thisObi).next().show()
         }
     })
     $('.class_4').on('mouseleave', function (e) {
         const thisObi = $(this),
             theObj = $(e.relatedTarget)
-        if (!($(theObj).hasClass('activated') || $(theObj).hasClass('menuClass_5') || $(theObj).parent().hasClass('menuClass_5'))) {
+        console.log(theObj)
+        // if (!($(theObj).hasClass('activated') || $(theObj).hasClass('menuClass_5') || $(theObj).parent().hasClass('menuClass_5'))) {
+        //     $(thisObi).removeClass('activated').next().hide().removeClass('activated')
+        // } else if ($(theObj).hasClass('contentNO') && !$(theObj).hasClass('activated')) {
+        //     return
+        // }
+        if ($(theObj).hasClass('contentNO') && !$(theObj).hasClass('activated')) {
+            return
+        } else if (!($(theObj).hasClass('activated') || $(theObj).hasClass('menuClass_5') || $(theObj).parent().hasClass('menuClass_5'))) {
             $(thisObi).removeClass('activated').next().hide().removeClass('activated')
         }
+
+        // if (!($(theObj).hasClass('activated') || $(theObj).hasClass('menuClass_5') || $(theObj).parent().hasClass('menuClass_5'))) {
+        //     return
+        // } else {
+        //     $(thisObi).removeClass('activated').next().hide().removeClass('activated')
+        // }
     })
 
     // nav-menu-level leave event
